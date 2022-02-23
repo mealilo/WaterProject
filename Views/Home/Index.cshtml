@@ -5,22 +5,14 @@ For more information on enabling MVC for empty projects, visit https://go.micros
 }
 
 @model ProjectsViewModel
-<h1>HEllo!</h1>
+
 
 @foreach (Project project in Model.Projects)
     {
-        <h3>@project.ProjectName</h3>
-
-
-        <ul>
-            <li> Regional Program: @project.ProjectRegionalProgram </li>
-            <li> Project Impact: @project.ProjectImpact indivduals served.</li>
-            <li> Project Type: @project.ProjectType</li>
-            <li> Project Phase: @project.ProjectPhase</li>
-            <li>Status: @project.ProjectFunctionalityStatus</li>
-        </ul>
+     <partial name="ProjectSummary" model="project" />
     }
 
 
 
-<div page-model="@Model.PageInfo" page-action="Index"></div>
+<div page-model="@Model.PageInfo" page-action="Index" page-class="btn"
+     page-class-normal="btn-outline-dark" page-class-selected="btn-primary" class="btn-group pull-right m-1" page-class-enabled="true"></div>
