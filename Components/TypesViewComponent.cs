@@ -18,6 +18,8 @@ namespace WaterProject.Components
 
         public IViewComponentResult Invoke()
         {
+
+            ViewBag.SelectedType = RouteData?.Values["projectType"];
             var types = repo.Projects
                 .Select(x => x.ProjectType)
                 .Distinct()

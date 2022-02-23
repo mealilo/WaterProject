@@ -32,7 +32,8 @@ namespace WaterProject.Controllers
 
                 PageInfo = new PageInfo
                 {
-                    TotalNumProjects = repo.Projects.Count(),
+                    TotalNumProjects = (projectType == null ? repo.Projects.Count() 
+                    : repo.Projects.Where(x => x.ProjectType == projectType).Count()),
                     ProjectsPerPage = pageSize,
                     CurrentPage = pageNum
                 }
