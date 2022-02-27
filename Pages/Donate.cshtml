@@ -15,6 +15,7 @@
             <th>Quantity</th>
             <th>Cost</th>
             <th>Subtotal</th>
+            <th>Remove</th>
         </tr>
     </thead>
     <tbody>
@@ -23,8 +24,15 @@
         <tr>
             <td>@project.Project.ProjectName</td>
             <td>@project.Quantity</td>
-            <td>25</td>
-            <td>@(project.Quantity * 25)</td>
+            <td>$25.00</td>
+            <td>@((project.Quantity * 25).ToString("c"))</td>
+            <td class="text-center">
+                <form method="post" asp-page-handler="Remove">
+                    <input type="hidden" name="projectId" value="@project.Project.ProjectId" />
+                    <input type="hidden" name="returnUrl" value="@Model.ReturnURl" />
+                    <button type="submit" class="btn btn-small btn-danger">Remove</button>
+                </form>
+            </td>
         </tr>
             }
     </tbody>

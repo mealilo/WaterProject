@@ -14,9 +14,11 @@ namespace WaterProject.Pages
 
         private IWaterProjectRepository repo { get; set; }
 
-        public DonateModel (IWaterProjectRepository temp)
+
+        public DonateModel (IWaterProjectRepository temp, Basket b)
         {
             repo = temp;
+            basket = b;
         }
 
         public Basket basket { get; set;}
@@ -24,22 +26,23 @@ namespace WaterProject.Pages
         public void OnGet(string returnURl)
         {
             ReturnURl = returnURl ?? "/";
-            basket = HttpContext.Session.GetJson<Basket>("basket") ?? new Basket();
+
         }
 
         public IActionResult OnPost(int projectID, string returnUrl)
         {
 
             Project p = repo.Projects.FirstOrDefault(x => x.ProjectId == projectID);
-
-            basket = HttpContext.Session.GetJson<Basket>("basket") ?? new Basket();
-
             basket.AddItem(p, 1);
-
-            HttpContext.Session.SetJson("basket", basket);
-
             return RedirectToPage(new { ReturnURl = returnUrl });
 
+        }
+
+        public IActionResult OnPostRemove(int projectId, string returnUrl)
+        {
+            basket.RemoveItem(basket.Items.First(x => x.Project.ProjectId == projectId).Project);
+
+            return RedirectToPage(new { ReturnURl = returnUrl });
         }
     }
 }
