@@ -3,10 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WaterProject.Models;
 
 namespace WaterProject.Controllers
 {
-    public class Donation : Controller
+    public class DonationController : Controller
     {
         public IActionResult Checkout()
         {
