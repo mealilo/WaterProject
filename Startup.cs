@@ -32,11 +32,13 @@ namespace WaterProject
             });
 
             services.AddScoped<IWaterProjectRepository, EFWaterProjectRepository>();
+            services.AddScoped<IDonationRepository, EFDonationRepository>();
             services.AddRazorPages();
 
             services.AddDistributedMemoryCache();
             services.AddSession();
             services.AddScoped<Basket>(x => SessionBasket.GetBasket(x));
+            
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 
@@ -57,7 +59,7 @@ namespace WaterProject
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute("typepage",
-                    "{projectType}/{pageNum}",
+                    "{projectType}/page{pageNum}",
                 new { Controller = "Home", action = "Index" });
 
                 endpoints.MapControllerRoute(
@@ -69,7 +71,7 @@ namespace WaterProject
                     "{projectType}",
                     new { Controller = "Home", action = "Index", pageNum = 1 });
 
-                
+
 
                 endpoints.MapDefaultControllerRoute();
 
