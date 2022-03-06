@@ -2,10 +2,10 @@
 @inherits OwningComponentBase<IDonationRepository>
 
 
-<DonationTablel TableTtile="Uncollected Donations" Donations="UncollectedDonations" ButtonLabel="Collected" DonationSelected="ResetDonation"></DonationTablel>
+<DonationTablel TableTtile="Uncollected Donations" Donations="UncollectedDonations" ButtonLabel="Collected" DonationSelected="CollectDonation"></DonationTablel>
 
 
-<DonationTablel TableTtile="Collected Donations" Donations="CollectedDonations" ButtonLabel="Reset" DonationSelected="CollectDonation"></DonationTablel>
+<DonationTablel TableTtile="Collected Donations" Donations="CollectedDonations" ButtonLabel="Reset" DonationSelected="ResetDonation"></DonationTablel>
 
 <button class="btn btn-info" @onclick="@(x => UpdateData())"> Refresh Data</button>
 @code {
