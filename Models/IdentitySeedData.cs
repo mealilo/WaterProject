@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace WaterProject.Models
 {
-    public class IdentitySeedData
+    public static class IdentitySeedData
     {
 
         private const string adminUser = "Admin";
